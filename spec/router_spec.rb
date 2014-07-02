@@ -21,7 +21,7 @@ describe Route do
       index_route.matches?(req).should be_true
     end
 
-    it "correctly doesn't matche regular expression with capture" do
+    it "correctly doesn't match regular expression with capture" do
       index_route = Route.new(Regexp.new("^/users/(?<id>\\d+)$"), :get, "UsersController", :index)
       req.stub(:path) { "/statuses/1" }
       req.stub(:request_method) { :get }
