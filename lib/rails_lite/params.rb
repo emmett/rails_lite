@@ -26,10 +26,7 @@ class Params
 	end
 
 	def permitted?(key)
-		@params.keys.each do |key|
-			@params.delete(key) unless @permitted_keys.include? key
-		end
-		@params.include? key
+		@permitted_keys.include? key
 	end
 
 	def to_s
