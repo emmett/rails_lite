@@ -30,7 +30,7 @@ class Params
 	end
 
 	def to_s
-		@params.to_s
+		@params.to_json.to_s
 	end
 
 	class AttributeNotFoundError < ArgumentError; end;
@@ -49,7 +49,7 @@ class Params
 			inner_hash = query_hash
 			keys = key_pair.first
 			value = key_pair.last
-			keys = keys.split(/\]\[|\[|\]/)
+			keys = parse_key(keys)
 			keys.each_with_index do |key, index|
 				if index == keys.length - 1
 					inner_hash[key] = value
@@ -65,6 +65,6 @@ class Params
 	# this should return an array
 	# user[address][street] should return ['user', 'address', 'street']
 	def parse_key(key)
-		
+		 key.split(/\]\[|\[|\]/)
 	end
 end

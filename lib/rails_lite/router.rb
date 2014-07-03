@@ -24,7 +24,6 @@ class Route
 		end
 		controller = @controller_class.new(req, res, match_hash)
 		controller.invoke_action(@action_name)
-		
   end
 end
 

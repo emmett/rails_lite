@@ -43,12 +43,10 @@ class ControllerBase
   # use ERB and binding to evaluate templates
   # pass the rendered html to render_content
   def render(template_name)
-		raise Exception if already_built_response?
 		controller_name = self.class.to_s.underscore
 		file = File.read "views/#{controller_name}/#{template_name}.html.erb"
 		template = ERB.new file
 		render_content(template.result(binding) ,"text/html")
-		@already_built_response = true
   end
 
   # method exposing a `Session` object
